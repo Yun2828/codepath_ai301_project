@@ -1,15 +1,17 @@
 # Contribution [#]: [Issue Title]
 
 **Contribution Number:** [1 / 2 / 3]  
-**Student:** [Your Name]  
-**Issue:** [GitHub issue link]  
-**Status:** [Phase I / Phase II / Phase III / Phase IV] [In Progress / Complete]
+**Student:** Yun  
+**Issue:** https://github.com/pytorch/ao/issues/3637  
+**Status:** Phase I Complete
 
 ---
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs explaining why this issue interests you, how it matches your skills/learning goals, what you hope to learn]
+I chose this issue because it connects to my interest in making machine learning models faster, smaller, and more efficient for real-world inference. PyTorch AO focuses on model optimization techniques like quantization, which can reduce memory usage and improve inference performance. Since I am interested in LLM inference optimization, this issue gives me a beginner-friendly way to start learning how production ML libraries document and support modern quantization workflows.
+
+This issue also feels like a good fit for my current skill level because it is documentation-focused but still technical. I do not need to write CUDA kernels or run large GPU benchmarks, but I do need to understand the difference between the deprecated AQT workflow and the newer quantize_ API. Through this contribution, I hope to learn more about PyTorch AO, quantization concepts, open-source documentation practices, and how maintainers guide users toward current best practices.
 
 ---
 
