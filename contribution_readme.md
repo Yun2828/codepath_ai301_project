@@ -1,8 +1,8 @@
 # Contribution [#]: [Issue Title]
 
-**Contribution Number:** [1 / 2 / 3]  
-**Student:** Yun  
-**Issue:** https://github.com/pytorch/ao/issues/3637  
+**Contribution Number:** [1 / 2 / 3]
+**Student:** Yun
+**Issue:** https://github.com/pytorch/ao/issues/3637
 **Status:** Phase I Complete
 
 ---
@@ -74,6 +74,7 @@ Using UMPIRE framework (adapted):
 **Match:** [What similar patterns/solutions exist in the codebase?]
 
 **Plan:** [Step-by-step implementation plan]
+
 1. [Modify file X to do Y]
 2. [Add function Z]
 3. [Update tests]
@@ -107,9 +108,9 @@ Using UMPIRE framework (adapted):
 
 ## Implementation Notes
 
-### Week [X] Progress
+### Week [1] Progress
 
-[What you built this week, challenges faced, decisions made]
+Had to install uv module because I haven't installed it locally yet.
 
 ### Week [Y] Progress
 
@@ -130,6 +131,7 @@ Using UMPIRE framework (adapted):
 **PR Description:** [Draft or final PR description - much of the content above can be adapted]
 
 **Maintainer Feedback:**
+
 - [Date]: [Summary of feedback received]
 - [Date]: [How you addressed it]
 
@@ -158,3 +160,4 @@ Using UMPIRE framework (adapted):
 - [Link to helpful documentation]
 - [Tutorial or Stack Overflow post that helped]
 - [GitHub issues or discussions that helped]
+
