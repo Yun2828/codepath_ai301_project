@@ -1,11 +1,9 @@
-# Contribution [#]: [Issue Title]
+# Contribution [1]: Math parity pyspark
 
-**Contribution Number:** [1 / 2 / 3]
+**Contribution Number:** 1
 **Student:** Yun
-**Issue:** https://github.com/pytorch/ao/issues/3637
-**Status:** Phase I Complete
-
----
+**Issue:** [github.com/Yun2828/Daft](https://github.com/Yun2828/Daft)
+**Status:** Phase I, II, III, IV Complete
 
 ## Why I Chose This Issue
 
@@ -19,39 +17,22 @@ This issue also feels like a good fit for my current skill level because it is d
 
 ### Problem Description
 
-[In your own words, what's broken or missing?]
-
-### Expected Behavior
-
-[What should happen?]
-
-### Current Behavior
-
-[What actually happens?]
-
-### Affected Components
-
-[Which parts of the codebase are involved?]
-
----
+Adding math expression that is featuer parity with pyspark.
 
 ## Reproduction Process
 
 ### Environment Setup
 
-[Notes on setting up your local development environment - challenges you faced, how you solved them]
+Created virtual enviroment and install dependencies.
 
 ### Steps to Reproduce
 
-1. [Step 1]
-2. [Step 2]
-3. [Observed result]
+1. Followed the instruction on claude.md and readme.md
 
 ### Reproduction Evidence
 
-- **Commit showing reproduction:** [Link to commit in your fork]
-- **Screenshots/logs:** [If applicable]
-- **My findings:** [What you discovered during reproduction]
+- **Commit showing reproduction:** [github.com/Yun2828/Daft](https://github.com/Yun2828/Daft)
+- **My findings: There's a similar functions that does the same thing as I was trying to do.**
 
 ---
 
@@ -59,17 +40,17 @@ This issue also feels like a good fit for my current skill level because it is d
 
 ### Analysis
 
-[Your analysis of the root cause - what's causing the issue?]
+Need to add two new math expression.
 
 ### Proposed Solution
 
-[High-level description of your fix approach]
+Write the expression and tests.
 
 ### Implementation Plan
 
 Using UMPIRE framework (adapted):
 
-**Understand:** [Restate the problem]
+**Understand:** Write two expressions.
 
 **Match:** [What similar patterns/solutions exist in the codebase?]
 
@@ -91,51 +72,53 @@ Using UMPIRE framework (adapted):
 
 ### Unit Tests
 
-- [ ] Test case 1: [Description]
-- [ ] Test case 2: [Description]
+- [X] Test case 1: [Description]
+- [X] Test case 2: [Description]
 - [ ] Test case 3: [Description]
-
-### Integration Tests
-
-- [ ] Integration scenario 1
-- [ ] Integration scenario 2
-
-### Manual Testing
-
-[What you tested manually and results]
-
----
-
-## Implementation Notes
-
-### Week [1] Progress
-
-Had to install uv module because I haven't installed it locally yet.
-
-### Week [Y] Progress
-
-[Continue documenting as you work]
-
-### Code Changes
-
-- **Files modified:** [List]
-- **Key commits:** [Links to important commits]
-- **Approach decisions:** [Why you chose certain approaches]
-
----
 
 ## Pull Request
 
-**PR Link:** [GitHub PR URL when submitted]
+**PR Link:** [github.com/Eventual-Inc/Daft/pull/7209](https://github.com/Eventual-Inc/Daft/pull/7209)
 
-**PR Description:** [Draft or final PR description - much of the content above can be adapted]
+**PR Description:**
+
+## Description
+
+Add PySpark-parity aliases to_degrees and to_radians for Daft's existing degrees and radians functions, using snake_case naming. They delegate to the already-registered builtins, reusing the existing Rust kernels.
+
+Related to [#3793](https://github.com/Eventual-Inc/Daft/issues/3793)
+
+## Changes Made
+
+Adds to_degrees and to_radians as PySpark-parity aliases for Daft's existing degrees and radians math functions, using Daft's snake_case naming convention (per [#3793](https://github.com/Eventual-Inc/Daft/issues/3793): "should all be snake_case instead of pyspark's mixed casing").
+
+* to_degrees is an alias for degrees (converts radians → degrees)
+* to_radians is an alias for radians (converts degrees → radians)
+
+These are thin wrappers that delegate to the already-registered degrees/radians builtins, so they reuse the existing Rust kernels — no new math kernel and no Rust changes are needed.
+
+Files changed:
+
+* daft/functions/numeric.py — new to_radians/to_degrees functions delegating to radians/degrees
+* daft/functions/ **init** .py — import the new functions and add them to **all**
+* daft/expressions/expressions.py — Expression.to_radians() / Expression.to_degrees() methods for chaining (e.g. col("a").to_degrees())
+* daft/series.py — matching Series.to_radians() / Series.to_degrees() methods
+* tests/recordbatch/numeric/test_numeric.py — test_table_numeric_to_degrees_to_radians_aliases, asserting the aliases produce identical results to the functions they alias
+
+Testing: New test passes; the full tests/recordbatch/numeric/test_numeric.py and tests/expressions/test_expressions.py suites pass (509 tests) under DAFT_RUNNER=native.
+
+Note: Since these are aliases, an expression like col("a").to_degrees() reprs as its canonical builtin name degrees(col(a)). This is intentional (both resolve to the same registered function), so the aliases are deliberately umpy-drivenparametrized trig tests and covered by a dedicated equivalence t
+Question for snake_casePython API (function + Expression/Series methods). Does the Spark Conmatically fromthe function registry, or should I also wire a toDegrees/toRs mapping tofully close out the Spark Connect parity aspect of the issue?
+
+## Related Issues
+
+Related to [#3793](https://github.com/Eventual-Inc/Daft/issues/3793)
 
 **Maintainer Feedback:**
 
-- [Date]: [Summary of feedback received]
-- [Date]: [How you addressed it]
+- The original issue is meant to be feature parity with pyspark. It is not intended to replicate the exact pyspark apis.
 
-**Status:** [Awaiting review / Iterating / Approved / Merged]
+**Status:** Closed
 
 ---
 
@@ -143,21 +126,18 @@ Had to install uv module because I haven't installed it locally yet.
 
 ### Technical Skills Gained
 
-[What you learned technically]
+Learned how to use python API.
 
 ### Challenges Overcome
 
-[What was hard and how you solved it]
+Understanding the codebase.
 
 ### What I'd Do Differently Next Time
 
-[Reflection on your process]
+Pay more attention to understanding the problem.
 
 ---
 
 ## Resources Used
 
-- [Link to helpful documentation]
-- [Tutorial or Stack Overflow post that helped]
-- [GitHub issues or discussions that helped]
-
+- [github.com/Yun2828/Daft](https://github.com/Yun2828/Daft)
